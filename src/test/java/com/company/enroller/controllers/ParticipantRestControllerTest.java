@@ -7,7 +7,7 @@ import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import java.util.Collection;
 
 import org.junit.Test;
@@ -18,7 +18,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
 import com.company.enroller.model.Participant;
 import com.company.enroller.persistence.MeetingService;
@@ -92,7 +92,7 @@ public class ParticipantRestControllerTest {
 
 		given(participantService.add(participant)).willReturn(participant);
 
-		mvc.perform(get("/participants/testlogin").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+		mvc.perform(post("/participants/testlogin").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isCreated())
 				.andExpect(content().string("{\"login\":\"testlogin\",\"password\":\"testpassword\"}"))
 				.andExpect(jsonPath("login", is("testlogin")));
 	}

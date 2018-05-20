@@ -98,4 +98,6 @@ public class ParticipantRestControllerTest {
 	}
 
 //kontrolery obejmuja logike biznesowa: odpowiadaja za np. zlozenie faktury, naliczenie rabatu itp.
+//research exception handler
+	
 }

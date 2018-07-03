@@ -18,9 +18,11 @@ public class MeetingService {
     }
 
     public Collection<Meeting> getAll() {
-        String hql = "FROM Meeting";
+        /* String hql = "FROM Meeting";
         Query query = connector.getSession().createQuery(hql);
         return query.list();
+         */
+         return connector.getSession().createCriteria(Meeting.class).list();
     }
 
     public Meeting findById(long id) {
@@ -38,7 +40,7 @@ public class MeetingService {
         connector.getSession().delete(meeting);
         transaction.commit();
     }
-    
+
     public void updateMeeting(Meeting meeting) {
         Transaction transaction = connector.getSession().beginTransaction();
         connector.getSession().update(meeting);

@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "meeting")
-public class Meeting {
+public class Meeting implements Comparable<Meeting>{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -83,5 +83,10 @@ public class Meeting {
 	public Collection<Participant> getParticipants() {
 		return participants;
 	}
+
+    @Override
+    public int compareTo(Meeting o) {
+        return this.getTitle().compareTo(o.getTitle());
+    }
 
 }

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/meetings")
+@RequestMapping("/api/meetings")
 public class MeetingRestController {
 
     @Autowired
